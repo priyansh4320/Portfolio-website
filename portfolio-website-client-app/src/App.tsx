@@ -1,11 +1,11 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { Canvas } from '@react-three/fiber';
-import { Text } from '@react-three/drei';
+import { OrbitControls} from '@react-three/drei';
+import { Box } from '@react-three/drei';
 import './App.css'
 
-
-
 function App() {
+  
   return (
    <>
    <Canvas camera={{ position: [0, 0, 5] }} 
@@ -16,13 +16,12 @@ function App() {
     background:"rgba(0,0,0,0.1)"
    }}
    >
-      <Text
-      fontSize={.5} 
-      color="black"
-      position={[-3.5,3.25,0]}
-      >
-        Hello, I'm An AI Engineer
-      </Text>
+    <ambientLight intensity={.5} />
+    <pointLight position={[1,1,1]}/>
+      <Box args={[1,1,1]}>
+        <meshStandardMaterial color={"red"} />
+        <OrbitControls/>
+      </Box>
   </Canvas>
   </>
   )
