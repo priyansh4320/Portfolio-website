@@ -1,11 +1,28 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls ,useGLTF} from '@react-three/drei';
+import { useRef,useState } from 'react';
 import './App.css'
 
-const Banana = () =>{
+const Banana = ({position}:{position:[number,number,number]}) =>{
+  
   const {scene} = useGLTF("/banana.glb");
-  return <primitive object={scene}  scale={10}/>
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const bananaRef = useRef<any>(0);
+  const [y , setY] = useState(position[1]);
+  const [rotation, setRotation] = useState([0, 0, 0]); 
+
+  useFrame(() => {
+    if (bananaRef.current) {
+      if (y>-2) {
+        setY((prevY)=>prevY-0.05);
+        bananaRef.current.position.y = y;
+
+        setRotation(([rx, ry, rz]) => [rx + 0.02, ry + 0.03, rz + 0.01]);
+        bananaRef.current.rotation.set(...rotation);
+      }
+    }
+  });
+  return <primitive ref={bananaRef} object={scene} position={[position[0], y, position[2]]} scale={10} />;
 }
 
 const App = () => {
@@ -21,10 +38,10 @@ const App = () => {
    >
     <ambientLight intensity={.5} />
     <pointLight position={[1,1,1]}/>
-      <Banana/>
+      <Banana  position={[0, 5, 0]}/>
       <OrbitControls/>
   </Canvas>  
   </>
   )
 }
-export default App
+export default App;
