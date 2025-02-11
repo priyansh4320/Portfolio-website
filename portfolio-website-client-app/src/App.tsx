@@ -15,11 +15,15 @@ const Banana = ({position}:{position:[number,number,number]}) =>{
     if (bananaRef.current) {
       if (y>-2) {
         setY((prevY)=>prevY-0.05);
+        }
+      else{
+          setY(5);
+        }
         bananaRef.current.position.y = y;
 
         setRotation(([rx, ry, rz]) => [rx + 0.02, ry + 0.03, rz + 0.01]);
         bananaRef.current.rotation.set(...rotation);
-      }
+      
     }
   });
   return <primitive ref={bananaRef} object={scene} position={[position[0], y, position[2]]} scale={10} />;
@@ -33,7 +37,7 @@ const App = () => {
     border:"solid 2px black",
     width:"100%",
     height:"100vh",
-    background:"rgba(0,0,0,.1)"
+    background:"rgba(0,0,0,.1)",
    }}
    >
     <ambientLight intensity={.5} />
