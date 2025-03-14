@@ -1,7 +1,7 @@
 
-1. **Background (Dark Black/Grey)** - `#0D0D0D`
+1. **Background (Dark Black)** - `#3C3C3C`
 2. **Primary Text (White/Greyish White)** - `#EAEAEA`
-3. **Accent Color (Neon Green)** - `#1ED760`
+3. **Accent Color (Neon Green)** - `#6DECB9`
 4. **Secondary Text (Greyish/Muted White)** - `#A0A0A0`
-5. **Button Background (Green)** - `#1ED760`
-6. **Card Background (Dark Grey)** - `#1A1A1A`
+5. **Button Background (Green)** - `#11999E`
+6. **Card Background ( Grey)** - `#F4F4F4`
